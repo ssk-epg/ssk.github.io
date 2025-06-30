@@ -3,52 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>今日の予定表</title>
-  <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    input, textarea { width: 100%; margin-bottom: 1rem; }
-    .entry { border: 1px solid #ccc; padding: 0.5rem; margin-bottom: 1rem; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="./timetable.js"></script>
+  <script src="./schedule.js"></script>
 </head>
 <body>
-  <h1>本日の予定</h1>
+  <ul>
+    <li>
+      <h1>本日の予定</h1>
+      <div id = "inputdata">
+      <input type="text" id="title" placeholder="予定のタイトル">
+      <textarea id="detail" rows="4" placeholder="詳細を入力"></textarea>
+      <div id = "timeInput">
+        <input type="text" id="Stime" placeholder="9:00">
+        &nbsp;～&nbsp;
+        <input type="text" id="Etime" placeholder="10:00">
+      </div>
+      <button onclick="addSchedule()" id="button">追加</button>
+      </div>
 
-  <input type="text" id="title" placeholder="予定のタイトル">
-  <textarea id="detail" rows="4" placeholder="詳細を入力"></textarea>
-  <button onclick="addSchedule()">追加</button>
+      <h2>今日の登録済み予定</h2>
+      <div id="scheduleList"></div>
+    </li>
+    <li>
+      <div id="timetable"></div>
+    </li>
+  </ul>
 
-  <h2>今日の登録済み予定</h2>
-  <div id="scheduleList"></div>
-
-  <script>
-    const todayKey = new Date().toISOString().slice(0, 10); // 例: "2025-06-30"
-
-    function loadSchedules() {
-      const data = localStorage.getItem(todayKey);
-      const schedules = data ? JSON.parse(data) : [];
-      const list = document.getElementById("scheduleList");
-      list.innerHTML = "";
-      schedules.forEach((s, i) => {
-        const div = document.createElement("div");
-        div.className = "entry";
-        div.innerHTML = `<strong>${s.title}</strong><br>${s.detail}`;
-        list.appendChild(div);
-      });
-    }
-
-    function addSchedule() {
-      const title = document.getElementById("title").value;
-      const detail = document.getElementById("detail").value;
-      if (!title) return alert("タイトルは必須です");
-      const data = localStorage.getItem(todayKey);
-      const schedules = data ? JSON.parse(data) : [];
-      schedules.push({ title, detail });
-      localStorage.setItem(todayKey, JSON.stringify(schedules));
-      document.getElementById("title").value = "";
-      document.getElementById("detail").value = "";
-      loadSchedules();
-    }
-
-    loadSchedules();
-  </script>
 </body>
 </html>

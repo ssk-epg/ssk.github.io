@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+body { font-family: sans-serif; padding: 2rem; }
+#inputdata {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-flow: column;
+}
+input, textarea { width: 100%; margin-bottom: 1rem; }
+#button {
+    width: 50px;
+}
+#Stime, #Etime {
+    width:50px;
+}
+#timeInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.entry {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+#addedbutton {
+    text-align: center;
+    width: 45px;
+    margin-left: 5px;
+    float: right;
+}
+#done {
+    text-decoration: line-through;
+    color: gray;
+}
+
+#timetable {
+    position: relative;
+    width: 700px;
+    height: 660px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+}
+.hour {
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    padding-left: 5px;
+}
+#now-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: red;
+    z-index: 2;
+}
+
+ul {
+  display: flex;
+  gap: 16px; /* 任意。余白 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  flex: 1; /* または width: 50% など */
+  box-sizing: border-box;
+}
+
+.schedule-block {
+  color: #000;
+  background-color: #bbdefb;
+  border-radius: 4px;
+  border: 1px solid #90caf9;
+  padding: 4px;
+  font-size: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-left: 30px;
+}
+
